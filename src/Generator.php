@@ -2,6 +2,7 @@
 
 namespace Ammanade\Docs;
 
-class Generator {
+class Generator
+{
     public string $test;
 }
