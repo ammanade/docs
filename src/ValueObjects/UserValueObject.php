@@ -9,7 +9,5 @@ class UserValueObject
         public EmailValueObject $email,
         public string $phone,
         public ?string $someValue
-    )
-    {
-    }
+    ) {}
 }

@@ -2,19 +2,20 @@
 
 namespace Ammanade\Docs\Commands;
 
+use Ammanade\Docs\Attributes\Input;
+use Ammanade\Docs\Attributes\Output;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Route as RouteFacade;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionProperty;
 use Symfony\Component\Console\Attribute\AsCommand;
-use Ammanade\Docs\Attributes\Input;
-use Ammanade\Docs\Attributes\Output;
 
 #[AsCommand('docs:generate')]
 class DocsCommand extends Command
 {
     protected $signature = 'docs:generate';
+
     protected $description = 'Generate API documentation based on route attributes';
 
     public function handle(): int
@@ -25,13 +26,13 @@ class DocsCommand extends Command
             ->map(function ($route) {
                 $action = $route->getAction('uses');
 
-                if (!is_string($action) || !str_contains($action, '@')) {
+                if (! is_string($action) || ! str_contains($action, '@')) {
                     return null;
                 }
 
                 [$controller, $method] = explode('@', $action);
 
-                if (!class_exists($controller) || !method_exists($controller, $method)) {
+                if (! class_exists($controller) || ! method_exists($controller, $method)) {
                     return null;
                 }
 
@@ -52,7 +53,7 @@ class DocsCommand extends Command
                     }
                 }
 
-                if (!$inputClass || !$outputClass) {
+                if (! $inputClass || ! $outputClass) {
                     return null;
                 }
 
@@ -61,7 +62,7 @@ class DocsCommand extends Command
 
                 return [
                     'method' => $route->methods()[0] ?? 'GET',
-                    'uri' => '/' . ltrim($route->uri(), '/'),
+                    'uri' => '/'.ltrim($route->uri(), '/'),
                     'controller' => $controller,
                     'action' => $method,
                     'input' => [
@@ -79,7 +80,7 @@ class DocsCommand extends Command
             ->toArray();
 
         file_put_contents(
-            __DIR__ . '/../../docs.json',
+            __DIR__.'/../../docs.json',
             json_encode($docs, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
         );
 
@@ -90,7 +91,7 @@ class DocsCommand extends Command
 
     private function extractFields(string $className): array
     {
-        if (!class_exists($className)) {
+        if (! class_exists($className)) {
             return [];
         }
 
@@ -134,7 +135,7 @@ class DocsCommand extends Command
                                 'items' => [
                                     'type' => $subType,
                                 ],
-                            ]
+                            ],
                         ];
                     }
                 }
@@ -174,7 +175,7 @@ class DocsCommand extends Command
 
         // Пробуем достроить через текущий namespace
         $namespace = $context->getNamespaceName();
-        $full = $namespace . '\\' . $class;
+        $full = $namespace.'\\'.$class;
 
         if (class_exists($full)) {
             return $full;

@@ -12,7 +12,5 @@ class ProductCreateResult
         public UserValueObject $user,
         /** @var UserValueObject[] */
         public array $users
-    )
-    {
-    }
+    ) {}
 }

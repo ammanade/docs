@@ -4,7 +4,6 @@ namespace Ammanade\Docs\Http\Controllers;
 
 use Ammanade\Docs\Attributes\Input;
 use Ammanade\Docs\Attributes\Output;
-
 use Ammanade\Docs\UseCases\Product\Create\ProductCreateCommand;
 use Ammanade\Docs\UseCases\Product\Create\ProductCreateHandler;
 use Ammanade\Docs\UseCases\Product\Create\ProductCreateResult;

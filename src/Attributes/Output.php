@@ -8,7 +8,5 @@ class Output
     public function __construct(
         /** @var class-string */
         public string $class
-    )
-    {
-    }
+    ) {}
 }

@@ -2,7 +2,4 @@
 
 namespace Ammanade\Docs;
 
-class Generator
-{
-
-}
+class Generator {}

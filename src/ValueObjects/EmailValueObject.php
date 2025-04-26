@@ -6,7 +6,5 @@ class EmailValueObject
 {
     public function __construct(
         public string $value
-    )
-    {
-    }
+    ) {}
 }
