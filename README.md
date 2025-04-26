@@ -76,7 +76,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Murat](https://github.com/murat)
+- [Ammande](https://github.com/ammanade)
 - [All Contributors](../../contributors)
 
 ## License
