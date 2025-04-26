@@ -19,6 +19,7 @@ class DocsServiceProvider extends PackageServiceProvider
             ->name('docs')
             ->hasConfigFile()
             ->hasViews()
+            ->hasRoutes('api')
             ->hasCommand(DocsCommand::class);
     }
 }
